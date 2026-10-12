@@ -194,18 +194,23 @@ const setText = (node, text) => {
 
 /* ----------------------------- Data loading ----------------------------- */
 async function loadDataset() {
-  try {
-    const res = await fetch(DATA_URL, { cache: 'no-cache' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.json();
-  } catch (err) {
-    // Fall back to embedded window.GCC_LOCATION_DATA if a host page has loaded it
-    if (window.GCC_LOCATION_DATA) {
-      console.warn('Falling back to window.GCC_LOCATION_DATA after fetch failure:', err);
-      return window.GCC_LOCATION_DATA;
+  let lastError;
+  for (const url of [DATA_URL, 'gcc-location-dataset.json']) {
+    try {
+      const res = await fetch(url, { cache: 'no-cache' });
+      if (!res.ok) throw new Error(`HTTP ${res.status} while loading ${url}`);
+      return await res.json();
+    } catch (err) {
+      lastError = err;
     }
-    throw err;
   }
+
+  // Fall back to embedded window.GCC_LOCATION_DATA if a host page has loaded it
+  if (window.GCC_LOCATION_DATA) {
+    console.warn('Falling back to window.GCC_LOCATION_DATA after fetch failure:', lastError);
+    return window.GCC_LOCATION_DATA;
+  }
+  throw lastError;
 }
 
 function getDefaultProfile(dataset) {
