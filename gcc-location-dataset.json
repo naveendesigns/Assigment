@@ -1,0 +1,570 @@
+{
+  "dataset_name": "GCC Location Decision Brief — Evidence-First Prototype Dataset",
+  "version": "1.0.0",
+  "created_date": "2026-10-12",
+  "research_cutoff": "2026-10-12",
+  "purpose": "Support a transparent prototype comparison of four Indian GCC city candidates. This is a research starter dataset, not a production-grade location recommendation engine.",
+  "methodology": {
+    "approach": "Evidence-first. Store source-backed qualitative signals and explicit gaps. Do not fabricate comparable numeric scores.",
+    "status_definitions": {
+      "supported_market_signal": "A specific market-level signal is supported by the cited source. It is not automatically a suitability score.",
+      "partial": "Evidence is relevant but incomplete for the user's exact company profile or criterion.",
+      "insufficient": "No comparable evidence in this dataset supports a reliable assessment for this criterion."
+    },
+    "scoring_rule": "Do not calculate a composite city score if any weighted criterion lacks comparable data. In the current dataset, operating cost, infrastructure/continuity, and launch readiness are insufficient for all cities; therefore, the product must not display a definitive numeric winner.",
+    "shortlist_rule": "Present cities as candidates for further evaluation with evidence-backed reasons, not a definitive rank. Show unresolved evidence gaps prominently.",
+    "weighting": {
+      "talent_availability": 0.4,
+      "operating_cost": 0.35,
+      "scalability": 0.25
+    },
+    "weighting_note": "Illustrative product defaults only. Not a researched benchmark or validated customer preference. The product must show and allow adjustment of weights.",
+    "critical_caveats": [
+      "Market-level leasing is a proxy for ecosystem activity, not talent supply or company-specific suitability.",
+      "The company profile's mixed roles are too broad for a precise role-level talent analysis.",
+      "Cost must be compared on like-for-like assumptions: role, seniority, compensation components, office grade, micro-market, seat assumptions, fit-out, operating charges, currency, and reference date.",
+      "Launch readiness must be assessed through company-specific dependencies and site-specific availability, not inferred from city-level market data.",
+      "Policy incentives must not be scored without checking the official policy text and company-specific eligibility."
+    ]
+  },
+  "default_profile": {
+    "id": "demo_profile_001",
+    "label": "Illustrative GCC profile",
+    "capability": "Multiple functions",
+    "role_family": "Mixed roles",
+    "initial_headcount": "Under 100",
+    "expected_growth": "Rapid growth",
+    "launch_timeline": "Within 6 months",
+    "cost_posture": "Cost-sensitive",
+    "priorities": [
+      "Talent availability",
+      "Operating cost",
+      "Scalability"
+    ],
+    "priority_weighting": {
+      "talent_availability": 0.4,
+      "operating_cost": 0.35,
+      "scalability": 0.25
+    },
+    "weighting_note": "Illustrative product defaults only. Not a researched benchmark or validated customer preference. The product must show and allow adjustment of weights.",
+    "interpretation": [
+      "Mixed roles and multiple functions are too broad to estimate role-specific talent availability confidently.",
+      "Cost-sensitive posture makes comparable salary and occupancy-cost data important, but no comparable four-city all-in cost dataset is currently included.",
+      "A launch target under six months requires site-specific readiness and setup dependency checks; city-level ecosystem data cannot prove that timeline.",
+      "Rapid growth makes scalability relevant, but office leasing and ecosystem growth are proxies rather than direct measures of hiring capacity."
+    ]
+  },
+  "criteria": [
+    {
+      "id": "talent_availability",
+      "label": "Talent availability",
+      "unit": "Qualitative until comparable role-level data exists",
+      "priority": true
+    },
+    {
+      "id": "operating_cost",
+      "label": "Operating cost",
+      "unit": "INR per role/year and INR per seat/month, with consistent assumptions",
+      "priority": true
+    },
+    {
+      "id": "scalability",
+      "label": "Scalability",
+      "unit": "Evidence-backed qualitative signal until comparable measures exist",
+      "priority": true
+    },
+    {
+      "id": "industry_ecosystem",
+      "label": "Industry ecosystem",
+      "unit": "Sourced ecosystem signals; not a direct score",
+      "priority": false
+    },
+    {
+      "id": "infrastructure_continuity",
+      "label": "Infrastructure & continuity",
+      "unit": "Comparable site/micro-market indicators required",
+      "priority": false
+    },
+    {
+      "id": "launch_readiness",
+      "label": "Launch readiness",
+      "unit": "Company-specific dependency checklist and dated plan",
+      "priority": false
+    }
+  ],
+  "cities": [
+    {
+      "id": "bengaluru",
+      "name": "Bengaluru",
+      "state": "Karnataka",
+      "market_position": "Established, high-activity GCC and technology market",
+      "key_micro_markets": [
+        {
+          "name": "Outer Ring Road (ORR)",
+          "source_ids": [
+            "S1",
+            "S6"
+          ]
+        },
+        {
+          "name": "Whitefield",
+          "source_ids": [
+            "S1",
+            "S6"
+          ]
+        },
+        {
+          "name": "North Bengaluru",
+          "source_ids": [
+            "S1"
+          ]
+        }
+      ],
+      "evidence": {
+        "talent_availability": {
+          "status": "partial",
+          "signal": "Strong technology-market signal; Colliers also identifies Bengaluru as a leading domestic/operational financial-services centre.",
+          "decision_implication": "Worth evaluating if the final role mix includes substantial technology or financial-services roles.",
+          "limitations": "Does not prove availability, salary, hiring speed, or retention for the exact mixed role family. Role mix must be specified before scoring.",
+          "source_ids": [
+            "S3",
+            "S4",
+            "S6"
+          ]
+        },
+        "operating_cost": {
+          "status": "insufficient",
+          "signal": "No comparable all-in cost figures for this exact under-100, mixed-function GCC profile are included in this dataset.",
+          "decision_implication": "Request like-for-like salary and occupancy estimates using the same roles, seniority, office grade, space assumptions, and date.",
+          "limitations": "Do not infer total cost from broad market reputation or office leasing volume. Rent alone is not total operating cost.",
+          "source_ids": [
+            "S2",
+            "S5"
+          ]
+        },
+        "industry_ecosystem": {
+          "status": "supported_market_signal",
+          "signal": "Bengaluru is a leading GCC leasing market; ORR, Whitefield, and North Bengaluru are identified as GCC micro-markets. Bengaluru recorded 22.1 million sq ft of Grade A office leasing in 2025 in Colliers' cited top-seven-city coverage.",
+          "decision_implication": "A credible candidate when the company values a deep, established GCC and technology ecosystem.",
+          "limitations": "Leasing volume measures market activity, not suitability for every company or guaranteed access to suitable space.",
+          "source_ids": [
+            "S1",
+            "S5",
+            "S6"
+          ]
+        },
+        "infrastructure_continuity": {
+          "status": "insufficient",
+          "signal": "No consistently measured, comparable city-level continuity dataset is included.",
+          "decision_implication": "Validate the specific office micro-market, commute patterns, power/connectivity redundancy, and business-continuity requirements during due diligence.",
+          "limitations": "Do not turn broad city stereotypes into a score.",
+          "source_ids": [
+            "S1"
+          ]
+        },
+        "scalability": {
+          "status": "partial",
+          "signal": "Large established GCC leasing market and multiple recognised GCC micro-markets.",
+          "decision_implication": "Market depth is a positive signal for future expansion, but hiring plans and office options still need to be tested.",
+          "limitations": "Market-wide leasing does not prove that this company can scale its exact roles at its target cost.",
+          "source_ids": [
+            "S1",
+            "S5"
+          ]
+        },
+        "launch_readiness": {
+          "status": "insufficient",
+          "signal": "No evidence in this dataset proves a six-month launch is achievable.",
+          "decision_implication": "Check entity, hiring, office, security, IT, vendor, and compliance dependencies against a dated implementation plan.",
+          "limitations": "A city choice alone cannot guarantee a launch timeline.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "city_summary": "Strongest established-market signal in this dataset, particularly for technology and broad GCC ecosystem access. Cost and launch feasibility remain unproven for this specific company."
+    },
+    {
+      "id": "hyderabad",
+      "name": "Hyderabad",
+      "state": "Telangana",
+      "market_position": "Established GCC and technology market with significant office development",
+      "key_micro_markets": [
+        {
+          "name": "Secondary Business District (SBD)",
+          "source_ids": [
+            "S1"
+          ]
+        },
+        {
+          "name": "Off-SBD",
+          "source_ids": [
+            "S1",
+            "S6"
+          ]
+        }
+      ],
+      "evidence": {
+        "talent_availability": {
+          "status": "partial",
+          "signal": "Strong technology-market signal; Colliers describes Hyderabad as an emerging domestic operational centre for financial services.",
+          "decision_implication": "Worth evaluating for technology and selected business-operation roles once the role mix is specified.",
+          "limitations": "Does not prove availability or cost for every role family in a mixed-function GCC.",
+          "source_ids": [
+            "S3",
+            "S4",
+            "S6"
+          ]
+        },
+        "operating_cost": {
+          "status": "insufficient",
+          "signal": "No comparable all-in cost figures for this exact company profile are included.",
+          "decision_implication": "Compare the same role/seniority salary basket and equivalent office assumptions against the other shortlisted cities.",
+          "limitations": "Do not label Hyderabad the cheapest city without like-for-like current data.",
+          "source_ids": [
+            "S2",
+            "S6"
+          ]
+        },
+        "industry_ecosystem": {
+          "status": "supported_market_signal",
+          "signal": "Bengaluru and Hyderabad together account for over 60% of GCC leasing since 2021 in Colliers' cited coverage. SBD and Off-SBD are recognised GCC/technology micro-markets.",
+          "decision_implication": "A credible candidate for an established GCC ecosystem and technology-related capabilities.",
+          "limitations": "Combined leasing share is not Hyderabad's individual share and does not imply fit for all functions.",
+          "source_ids": [
+            "S1",
+            "S6"
+          ]
+        },
+        "infrastructure_continuity": {
+          "status": "insufficient",
+          "signal": "No consistent, comparable city-level operational continuity measure is included.",
+          "decision_implication": "Validate the proposed micro-market, commute catchment, utilities, connectivity, and site-specific continuity provisions.",
+          "limitations": "Do not infer a city-wide score from general reputation.",
+          "source_ids": [
+            "S1"
+          ]
+        },
+        "scalability": {
+          "status": "partial",
+          "signal": "Established GCC leasing activity and substantial office development pipeline; CBRE reports Hyderabad, Bengaluru, and Pune together accounted for 64% of 2025 new office completions.",
+          "decision_implication": "A positive market-depth signal to investigate for rapid growth.",
+          "limitations": "The combined figure does not isolate Hyderabad's contribution or prove immediately available space at the required scale and budget.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "launch_readiness": {
+          "status": "insufficient",
+          "signal": "No evidence in this dataset proves a six-month launch is achievable.",
+          "decision_implication": "Confirm local entity and compliance requirements, hiring lead times, suitable office availability, and vendor mobilisation.",
+          "limitations": "Policy or market activity alone cannot establish launch readiness.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "city_summary": "Strong established GCC and technology ecosystem signal. Cost advantage and six-month launch feasibility need direct, comparable validation."
+    },
+    {
+      "id": "chennai",
+      "name": "Chennai",
+      "state": "Tamil Nadu",
+      "market_position": "Established office market with rising GCC leasing momentum and engineering/manufacturing relevance",
+      "key_micro_markets": [
+        {
+          "name": "OMR Zone 1",
+          "source_ids": [
+            "S1",
+            "S6"
+          ]
+        },
+        {
+          "name": "MPR",
+          "source_ids": [
+            "S1"
+          ]
+        },
+        {
+          "name": "PTR",
+          "source_ids": [
+            "S1"
+          ]
+        }
+      ],
+      "evidence": {
+        "talent_availability": {
+          "status": "partial",
+          "signal": "Colliers describes Chennai as increasingly relevant to engineering and manufacturing GCCs; financial-services research also identifies Chennai as an emerging domestic operational centre.",
+          "decision_implication": "Worth evaluating if the final role mix includes engineering, manufacturing-related capabilities, or selected operations roles.",
+          "limitations": "The user's mixed role family is not specific enough to estimate availability across all needed occupations.",
+          "source_ids": [
+            "S1",
+            "S4",
+            "S6"
+          ]
+        },
+        "operating_cost": {
+          "status": "insufficient",
+          "signal": "No comparable all-in cost figures for the exact company profile are included.",
+          "decision_implication": "Test the cost hypothesis using same-date role-level salary estimates and equivalent occupancy options.",
+          "limitations": "Do not assume a city is cheaper based on broad commentary; total cost includes more than rent.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "industry_ecosystem": {
+          "status": "supported_market_signal",
+          "signal": "Colliers reports Chennai's GCC leasing in 2025 was approximately four times its 2021 level, and identifies OMR/MPR/PTR among key GCC micro-markets.",
+          "decision_implication": "A credible candidate to evaluate, particularly for engineering/manufacturing-related needs and a diversified GCC mandate.",
+          "limitations": "Growth from a base does not establish absolute scale, role fit, or cost competitiveness for this company.",
+          "source_ids": [
+            "S1",
+            "S6"
+          ]
+        },
+        "infrastructure_continuity": {
+          "status": "insufficient",
+          "signal": "No consistent, comparable city-level continuity dataset is included.",
+          "decision_implication": "Validate the chosen micro-market, employee commute catchment, power/connectivity redundancy, and business-continuity requirements.",
+          "limitations": "Do not infer operational reliability from leasing growth.",
+          "source_ids": [
+            "S1"
+          ]
+        },
+        "scalability": {
+          "status": "partial",
+          "signal": "Strong recent GCC leasing growth provides a positive momentum signal; key GCC micro-markets are identified by Colliers.",
+          "decision_implication": "Worth investigating for future growth, while testing depth for each required role family.",
+          "limitations": "Growth in leasing does not directly measure the ability to recruit a mixed workforce rapidly.",
+          "source_ids": [
+            "S1",
+            "S6"
+          ]
+        },
+        "launch_readiness": {
+          "status": "insufficient",
+          "signal": "No evidence in this dataset proves a six-month launch is achievable.",
+          "decision_implication": "Validate specific office availability, local hiring capacity, legal/compliance dependencies, and implementation timeline.",
+          "limitations": "A rising GCC market is not a launch-readiness guarantee.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "city_summary": "Strong recent GCC growth signal and relevant engineering/manufacturing ecosystem. Do not assume a cost advantage or broad mixed-role talent fit without comparable data."
+    },
+    {
+      "id": "pune",
+      "name": "Pune",
+      "state": "Maharashtra",
+      "market_position": "Established office market with technology, engineering/manufacturing, and selected financial-services activity",
+      "key_micro_markets": [
+        {
+          "name": "Kharadi",
+          "source_ids": [
+            "S1",
+            "S6"
+          ]
+        }
+      ],
+      "evidence": {
+        "talent_availability": {
+          "status": "partial",
+          "signal": "Pune appears among India's notable financial-services talent locations in Colliers' 2026 report; Colliers also identifies Pune as an established technology office market.",
+          "decision_implication": "Worth evaluating for technology, engineering/manufacturing, and selected financial-services support roles once the role mix is specified.",
+          "limitations": "These sector signals do not establish role-by-role availability, salary, or time-to-hire for a mixed GCC.",
+          "source_ids": [
+            "S4",
+            "S6"
+          ]
+        },
+        "operating_cost": {
+          "status": "insufficient",
+          "signal": "No comparable all-in cost figures for this exact company profile are included.",
+          "decision_implication": "Request a same-date salary basket and equivalent office/managed-space cost assumptions for all four cities.",
+          "limitations": "Do not infer lower total operating cost from market position alone.",
+          "source_ids": [
+            "S2",
+            "S6"
+          ]
+        },
+        "industry_ecosystem": {
+          "status": "supported_market_signal",
+          "signal": "Kharadi is identified as a GCC micro-market; Pune is included among India's major technology office markets and appears in the financial-services talent research.",
+          "decision_implication": "A credible candidate where the final role mix aligns with its technology, engineering, or selected financial-services ecosystem.",
+          "limitations": "Market presence does not prove a fit for every role family or budget.",
+          "source_ids": [
+            "S1",
+            "S4",
+            "S6"
+          ]
+        },
+        "infrastructure_continuity": {
+          "status": "insufficient",
+          "signal": "No consistent, comparable city-level continuity dataset is included.",
+          "decision_implication": "Validate the proposed micro-market, employee commute patterns, utilities, connectivity, and business-continuity needs.",
+          "limitations": "Do not turn general city reputation into a score.",
+          "source_ids": [
+            "S1"
+          ]
+        },
+        "scalability": {
+          "status": "partial",
+          "signal": "Pune is an established office market; Bengaluru, Hyderabad, and Pune together accounted for 64% of new office completions in 2025 according to CBRE.",
+          "decision_implication": "A positive office-market depth signal, subject to verifying suitable options and talent for the planned expansion.",
+          "limitations": "The combined statistic does not isolate Pune's contribution or prove that a specific office is available.",
+          "source_ids": [
+            "S2",
+            "S1"
+          ]
+        },
+        "launch_readiness": {
+          "status": "insufficient",
+          "signal": "No evidence in this dataset proves a six-month launch is achievable.",
+          "decision_implication": "Validate role-level hiring, specific office availability, entity/compliance tasks, and supplier readiness.",
+          "limitations": "Office market activity is not proof of an achievable launch timeline.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "city_summary": "Credible alternative for selected technology, engineering, and financial-services roles. Mixed-role talent fit, total cost, and launch readiness remain unproven."
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Colliers",
+      "title": "GCCs in India: Global leadership through scale, competitiveness, talent & innovation",
+      "published": "2026-07-23",
+      "url": "https://www.colliers.com/en-in/research/gccs-in-india-global-leadership-through-scale-competitiveness-talent-innovation",
+      "supports": [
+        "Bengaluru and Hyderabad account for over 60% of GCC leasing since 2021.",
+        "Chennai recorded approximately fourfold growth in GCC leasing in 2025 compared with 2021.",
+        "Bengaluru ORR and Hyderabad SBD are leading GCC micro-markets.",
+        "BFSI and Engineering & Manufacturing are significant GCC leasing demand contributors.",
+        "Key GCC micro-markets include Bengaluru ORR/Whitefield/North Bengaluru, Hyderabad SBD/Off-SBD, Chennai OMR/MPR/PTR, and Pune Kharadi."
+      ],
+      "limitations": "Leasing activity is a proxy for ecosystem activity, not a direct measure of talent availability, total operating cost, or launch readiness. The report focuses on Grade A office leasing and defined city coverage."
+    },
+    {
+      "id": "S2",
+      "publisher": "CBRE India",
+      "title": "India Office Figures Q4 2025",
+      "published": "2026-01-05",
+      "url": "https://www.cbre.co.in/insights/figures/india-office-figures-q4-2025",
+      "supports": [
+        "India office leasing reached 82.6 million sq ft in 2025.",
+        "Bengaluru, Mumbai, and Delhi-NCR accounted for about 61% of total office take-up.",
+        "Bengaluru, Hyderabad, and Pune accounted for a cumulative 64% of new office completions in 2025.",
+        "GCCs accounted for 39% of office absorption in Q4 2025."
+      ],
+      "limitations": "National and city-market signals do not establish the cost or availability of a specific office for a small GCC. Office completions are not equivalent to immediately suitable, available, or affordable space."
+    },
+    {
+      "id": "S3",
+      "publisher": "Colliers",
+      "title": "Global Tech Markets: Top Talent Locations 2025",
+      "published": "2025-07-10",
+      "url": "https://www.colliers.com/en-in/research/global-tech-markets-top-talent-location",
+      "supports": [
+        "Bengaluru is identified as a leading global technology talent market.",
+        "India has several strong technology talent markets across the APAC region."
+      ],
+      "limitations": "The published overview does not provide directly comparable occupation-by-occupation data for this specific mixed-function company profile. Do not use it to generate numerical city talent scores."
+    },
+    {
+      "id": "S4",
+      "publisher": "Colliers",
+      "title": "India Financial Services Talent Hub Report 2026",
+      "published": "2026-06-12",
+      "url": "https://www.colliers.com/en-in/news/press-release-fs-talent-market-report",
+      "supports": [
+        "Bengaluru is identified as a leading domestic and operational financial-services centre.",
+        "Hyderabad, Pune, and Chennai are described as emerging domestic operational centres for financial services.",
+        "The report's labour index incorporates talent-pool size, talent density, and open job posts."
+      ],
+      "limitations": "This is financial-services-specific. It cannot stand in for a mixed role-family assessment or establish hiring feasibility for the user's exact job mix."
+    },
+    {
+      "id": "S5",
+      "publisher": "Colliers",
+      "title": "India Office Leasing Crosses 70 MSF in 2025",
+      "published": "2025-12-24",
+      "url": "https://www.colliers.com/en-in/news/press-release-office-market-q4-2025",
+      "supports": [
+        "Bengaluru recorded 22.1 million sq ft of Grade A office leasing in 2025.",
+        "Bengaluru accounted for nearly one-third of pan-India office leasing activity in the cited top-seven-city market."
+      ],
+      "limitations": "Leasing demand is an ecosystem signal, not a direct indicator of rent affordability, availability of small office suites, or the ability to launch within six months."
+    },
+    {
+      "id": "S6",
+      "publisher": "Colliers",
+      "title": "Technology Sector Office Demand India 2025",
+      "published": "2025",
+      "url": "https://www.colliers.com/en-in/news/press-release-tech-sector-trends",
+      "supports": [
+        "Bengaluru and Hyderabad together account for nearly half of technology leasing over the preceding five years.",
+        "Pune and Chennai are also established technology office markets.",
+        "The source identifies key technology micro-markets in Bengaluru, Hyderabad, and Chennai."
+      ],
+      "limitations": "Technology leasing is not a substitute for a role-level talent benchmark or an all-functions GCC suitability score."
+    },
+    {
+      "id": "S7",
+      "publisher": "Directorate of ICT & e-Governance, Government of Gujarat",
+      "title": "Gujarat GCC Policy 2025–30",
+      "published": "2025",
+      "url": "https://directorit.gujarat.gov.in/GCC",
+      "supports": [
+        "An official state GCC policy exists for Gujarat."
+      ],
+      "limitations": "Not used to score the four-city shortlist. Policy availability does not imply eligibility, and eligibility depends on policy text and company-specific facts."
+    },
+    {
+      "id": "S8",
+      "publisher": "Industries, Investment and Services Department, Government of Maharashtra",
+      "title": "Maharashtra policies index (includes GCC Policy 2025 and operational guidelines)",
+      "published": "2025–2026",
+      "url": "https://industry.maharashtra.gov.in/en/services/policies",
+      "supports": [
+        "Maharashtra's official policy index lists a GCC Policy 2025 and operational guidelines."
+      ],
+      "limitations": "A policy index alone does not establish eligibility or the value of an incentive for an individual company."
+    }
+  ],
+  "recommendation_policy": {
+    "headline": "Your provisional shortlist",
+    "avoid": [
+      "Best city",
+      "Guaranteed savings",
+      "Fastest setup",
+      "Lowest cost"
+    ],
+    "allowed": [
+      "Candidate to evaluate",
+      "Evidence supports further review",
+      "Insufficient evidence to rank",
+      "Requires company-specific validation"
+    ],
+    "current_profile_result": {
+      "result_type": "evidence-led candidate set, not a ranked winner",
+      "reason": "The profile requests multiple functions and mixed roles, while comparable role-level talent data, like-for-like all-in cost data, infrastructure-continuity data, and launch-readiness data are not available in this dataset.",
+      "next_inputs_to_improve_confidence": [
+        "Specify the top two or three functions and priority role families.",
+        "Define seniority mix and target hiring volume per role family.",
+        "Set a consistent office model and space assumption.",
+        "Obtain same-period, like-for-like salary and occupancy estimates.",
+        "Define what the six-month launch must include and which dependencies are already completed."
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+/* Saffron Ink design tokens
+   Typography: Manrope for UI, monospace for metadata/evidence labels.
+   Use local font files where possible; otherwise load fonts intentionally.
+*/
+:root {
+  --font-sans: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "DM Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  --saffron-50: #FFF8E8;
+  --saffron-100: #FCECC8;
+  --saffron-300: #E9B949;
+  --saffron-500: #D99516;
+  --saffron-700: #9B5E08;
+
+  --ink-950: #1D1A16;
+  --ink-800: #302A23;
+  --ink-600: #62594F;
+  --ink-400: #938779;
+
+  --paper: #FFFCF6;
+  --surface: #FFFFFF;
+  --surface-muted: #F7F2E8;
+  --border: #E6DDCE;
+
+  --status-supported: #2F6B4F;
+  --status-partial: #946200;
+  --status-insufficient: #765F4A;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --shadow-soft: 0 8px 28px rgba(29, 26, 22, 0.06);
+}
